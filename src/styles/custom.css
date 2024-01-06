@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap");
+
+/* Chrome, Safari, and Opera */
+::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4F228D;
+}
