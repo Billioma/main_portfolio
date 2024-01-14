@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Flex, Text, Button, Box, useDisclosure } from "@chakra-ui/react";
 import { headers } from "../components/common/constants";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
 
 const Header = () => {
-  const mobileStyle = {
-    color: "#CC6E3B",
-  };
-
   const navigate = useNavigate();
   const { isOpen, onClose, onOpen } = useDisclosure();
 
@@ -47,7 +43,7 @@ const Header = () => {
     });
   }, []);
 
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState("home");
 
   const handleScroll = () => {
     const sections = document.querySelectorAll("section");
@@ -74,6 +70,8 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const { pathname } = useLocation();
+
   return (
     <Flex
       bg={scroll ? "radial-gradient(#763CAC, 100%)" : "headerBg"}
@@ -91,6 +89,7 @@ const Header = () => {
       top="0"
       justifyContent="center"
       pb="0"
+      px={{ base: "20px", lg: "unset" }}
       h={{ base: "80px", lg: "80px" }}
       align="flex-end"
     >
@@ -99,17 +98,22 @@ const Header = () => {
         w={{ base: "full", md: "full", lg: "1024px", xl: "1200px" }}
       >
         <Flex
-          fontFamily="Archivo"
+          fontFamily="Plus Jakarta Sans"
           w="100%"
-          px={{ base: "20px", lg: "unset" }}
           borderBottom="1px solid #4F228D"
           pb={{ base: "22px", lg: "unset" }}
           align="center"
           justifyContent="space-between"
         >
-          <Box w="fit-content" pos="absolute" left="0" bottom="11px">
+          <Box
+            w={{ base: "full", md: "fit-content" }}
+            pos={{ base: "unset", md: "absolute" }}
+            left="0"
+            bottom="11px"
+          >
             <Flex
               bg="#fff"
+              onClick={() => navigate("/")}
               rounded="full"
               justifyContent="center"
               align="center"
@@ -120,23 +124,18 @@ const Header = () => {
               <Text fontWeight={700}>B.O</Text>
             </Flex>
           </Box>
-          <Flex gap="20px" align="center">
-            <Button
-              display={{ base: "flex", lg: "none" }}
-              onClick={() => navigate("/contact-us")}
-              w="112px"
-              h="36px"
-              size="sm"
-              fontSize="14px"
-            >
-              Contact Us
-            </Button>
+          <Flex gap="20px" align="center" justifyContent="flex-end" w="full">
+            <a href="/contact-us" rel="noreferrer">
+              <Button w="112px" h="36px" mt="-5px" fontSize="14px">
+                Contact Us
+              </Button>
+            </a>
             <Box pos="relative" className="box">
               <Box display={{ base: isOpen ? "flex" : "none", lg: "none" }}>
-                <AiOutlineClose onClick={onClose} color="#DDA15E" size="24px" />
+                <AiOutlineClose onClick={onClose} color="#7127BA" size="24px" />
               </Box>
               <Box display={{ base: isOpen ? "none" : "flex", lg: "none" }}>
-                <AiOutlineMenu onClick={onOpen} color="#DDA15E" size="24px" />
+                <AiOutlineMenu onClick={onOpen} color="#7127BA" size="24px" />
               </Box>
               {isOpen && (
                 <motion.div
@@ -145,31 +144,43 @@ const Header = () => {
                 >
                   <Box
                     w="201px"
-                    bg="#646464"
+                    bg="headerBg"
+                    borderRadius="6px"
+                    border="2px solid #4F228D"
                     p="20px"
                     pos="absolute"
                     right="0"
                     top="47px"
                   >
-                    {headers.map((dat, i) => (
-                      <NavLink
-                        key={i}
-                        onClick={onClose}
-                        to={dat?.path}
-                        style={({ isActive }) =>
-                          isActive
-                            ? { ...mobileStyle }
-                            : {
-                                ...mobileStyle,
-                                borderBottom: "unset",
-                                color: "#fff",
-                              }
-                        }
+                    {(pathname !== "/contact-us"
+                      ? headers
+                      : headers.slice(0, 1)
+                    ).map((dat, i) => (
+                      <Link
+                        to={dat?.name?.toLowerCase()}
+                        offset={-150}
+                        smooth={true}
+                        duration={500}
                       >
-                        <Text lineHeight="23px" pb="9px" fontSize="15px">
-                          {dat?.name}
-                        </Text>
-                      </NavLink>
+                        <Flex
+                          key={i}
+                          onClick={() => {
+                            pathname === "/contact-us" ? navigate("/") : "";
+                            onClose();
+                          }}
+                          align="center"
+                          color={
+                            activeSection === dat?.name?.toLowerCase() &&
+                            pathname !== "/contact-us"
+                              ? "#7127BA"
+                              : "unset"
+                          }
+                        >
+                          <Text lineHeight="23px" pb="9px" fontSize="15px">
+                            {dat?.name}
+                          </Text>
+                        </Flex>
+                      </Link>
                     ))}
                   </Box>
                 </motion.div>
@@ -181,44 +192,48 @@ const Header = () => {
             gap="50px"
             align="flex-start"
           >
-            {headers.map((dat, i) => (
-              <Link
-                to={dat?.name?.toLowerCase()}
-                offset={-150}
-                smooth={true}
-                duration={500}
-              >
-                <Flex
-                  key={i}
-                  to={dat?.path}
-                  h="40px"
-                  justifyContent="center"
-                  cursor="pointer"
-                  align="center"
-                  borderBottom={
-                    activeSection === dat?.name?.toLowerCase()
-                      ? "5px solid #7127BA"
-                      : "unset"
-                  }
-                  pb={
-                    activeSection === dat?.name?.toLowerCase() ? "17px" : "22px"
-                  }
-                  px="5px"
+            {(pathname !== "/contact-us" ? headers : headers.slice(0, 1)).map(
+              (dat, i) => (
+                <Link
+                  to={dat?.name?.toLowerCase()}
+                  offset={-150}
+                  smooth={true}
+                  duration={500}
                 >
-                  <Text lineHeight="25px" fontSize="18px">
-                    {dat?.name}
-                  </Text>
-                </Flex>
-              </Link>
-            ))}
-            <Button
-              onClick={() => navigate("/contact-us")}
-              w="112px"
-              mt="-5px"
-              fontSize="14px"
-            >
-              Contact Us
-            </Button>
+                  <Flex
+                    key={i}
+                    h="40px"
+                    justifyContent="center"
+                    cursor="pointer"
+                    onClick={() =>
+                      pathname === "/contact-us" ? navigate("/") : ""
+                    }
+                    align="center"
+                    borderBottom={
+                      activeSection === dat?.name?.toLowerCase() &&
+                      pathname !== "/contact-us"
+                        ? "5px solid #7127BA"
+                        : "unset"
+                    }
+                    pb={
+                      activeSection === dat?.name?.toLowerCase()
+                        ? "17px"
+                        : "22px"
+                    }
+                    px="5px"
+                  >
+                    <Text lineHeight="25px" fontSize="18px">
+                      {dat?.name}
+                    </Text>
+                  </Flex>
+                </Link>
+              ),
+            )}
+            <a href="/contact-us" rel="noreferrer">
+              <Button w="112px" mt="-5px" fontSize="14px">
+                Contact Us
+              </Button>
+            </a>
           </Flex>
         </Flex>
       </Box>

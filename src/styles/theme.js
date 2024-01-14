@@ -43,7 +43,7 @@ export const customTheme = extendTheme({
           field: {
             bgColor: "#fff",
             borderRadius: "10px",
-            color: "#000",
+            color: "#fff",
             _placeholder: {
               color: "gray",
               padding: "5",
@@ -55,7 +55,7 @@ export const customTheme = extendTheme({
             bgColor: "#F2F2F2",
             border: "1px solid #E0E0E0",
             borderRadius: "5px",
-            color: "#000",
+            color: "#fff",
             _placeholder: {
               color: "#333333",
               padding: "10px",
@@ -105,7 +105,7 @@ export const customTheme = extendTheme({
       variants: {
         primary: {
           bg: "#f2f2f2",
-          color: "#000",
+          color: "#fff",
           borderRadius: "10px",
           _placeholder: {
             color: "#BDBDBD",
@@ -113,7 +113,7 @@ export const customTheme = extendTheme({
         },
         secondary: {
           bg: "#fff",
-          color: "#000",
+          color: "#fff",
           border: "1px solid gray",
           _placeholder: {
             color: "#BDBDBD",
@@ -131,7 +131,6 @@ export const customTheme = extendTheme({
           border: "none",
           borderRadius: "unset",
           fontSize: "14px",
-          fontFamily: "Archivo",
           height: "40px",
           bgColor: "#7127BA",
           color: "#fff",
@@ -156,7 +155,6 @@ export const customTheme = extendTheme({
         secondary: {
           bgColor: "transparent",
           borderRadius: "unset",
-          fontFamily: "Archivo",
           border: "1.5px solid #8F512E",
           color: "brownColor",
           fontSize: "14px",

@@ -8,13 +8,16 @@ const Layout = ({ children }) => {
       <Header />
       <Flex
         justifyContent="center"
+        overflow="hidden"
         align="center"
         w="full"
         px={{ base: "20px", md: "20px", lg: "unset" }}
       >
         <Box
-          pb={{ base: "50px", lg: "100px" }}
-          pt="20px"
+          pb={{ base: "150px", lg: "100px" }}
+          pt={{ base: "50px", md: "120px" }}
+          overflow={{ base: "scroll", md: "unset" }}
+          className="no_scroller"
           w={{ base: "full", md: "full", lg: "1024px", xl: "1200px" }}
         >
           {children}
