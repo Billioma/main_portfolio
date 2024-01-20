@@ -138,7 +138,6 @@ const About = () => {
           {iconRows}
         </Box>
 
-
         <Orbit />
       </Box>
     </section>

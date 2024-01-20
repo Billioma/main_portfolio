@@ -65,7 +65,7 @@ const Contact = () => {
         "service_qxj8a0o",
         "contact_form",
         form.current,
-        "_lUXdxtuoOOPggNCb"
+        "_lUXdxtuoOOPggNCb",
       );
     } catch (error) {
       console.error("Error sending email:", error);

@@ -5,7 +5,6 @@ import {
   FaSass,
   FaFigma,
   FaVuejs,
-  FaGithub,
 } from "react-icons/fa";
 import {
   SiTypescript,

@@ -235,7 +235,7 @@ const Header = () => {
                     </Text>
                   </Flex>
                 </Link>
-              )
+              ),
             )}
             <a href="/contact-us" rel="noreferrer">
               <Button w="112px" mt="-5px" fontSize="14px">

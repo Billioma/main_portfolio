@@ -6,11 +6,7 @@ const Home = () => {
     <section id="home">
       <Box fontFamily="Preahvihear">
         <Flex align="center" w="100%" flexDir={{ base: "column", md: "row" }}>
-          <Flex
-            justifyContent="center"
-            align="center"
-            pos="relative"
-          >
+          <Flex justifyContent="center" align="center" pos="relative">
             <Flex
               justifyContent="center"
               align="center"
@@ -85,10 +81,7 @@ const Home = () => {
         </Box>
 
         <Box mt="67px" w={{ base: "100%", md: "78%" }}>
-          <Text
-            lineHeight="180%"
-            fontSize={{ base: "16px", md: "20px" }}
-          >
+          <Text lineHeight="180%" fontSize={{ base: "16px", md: "20px" }}>
             A self-taught Software Engineer (Front-end), functioning in the
             industry for 6+ years now. I make meaningful and delightful digital
             products that create an equilibrium between user needs and business

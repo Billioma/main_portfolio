@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Box, Flex, Image, Text, useMediaQuery } from "@chakra-ui/react";
-import { FaGithub, FaEye } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 import { BsCircleFill, BsTriangleFill } from "react-icons/bs";
 import { featuredWorks } from "../common/constants";
 
@@ -115,7 +115,7 @@ const FeaturedProject = () => {
       window.removeEventListener("resize", handleMobileResize);
       mobileRef.current.removeEventListener(
         "scroll",
-        handleMobileScrollThrottled
+        handleMobileScrollThrottled,
       );
     };
   }, []);

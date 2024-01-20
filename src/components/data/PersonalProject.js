@@ -115,7 +115,7 @@ const PersonalProject = () => {
       window.removeEventListener("resize", handleMobileResize);
       mobileRef.current.removeEventListener(
         "scroll",
-        handleMobileScrollThrottled
+        handleMobileScrollThrottled,
       );
     };
   }, []);
