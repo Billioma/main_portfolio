@@ -124,7 +124,13 @@ const Header = () => {
               <Text fontWeight={700}>B.O</Text>
             </Flex>
           </Box>
-          <Flex gap="20px" align="center" justifyContent="flex-end" w="full">
+          <Flex
+            gap="20px"
+            display={{ base: "flex", lg: "none" }}
+            align="center"
+            justifyContent="flex-end"
+            w="full"
+          >
             <a href="/contact-us" rel="noreferrer">
               <Button w="112px" h="36px" mt="-5px" fontSize="14px">
                 Contact Us
@@ -191,6 +197,8 @@ const Header = () => {
             display={{ base: "none", lg: "flex" }}
             gap="50px"
             align="flex-start"
+            w="full"
+            justifyContent="flex-end"
           >
             {(pathname !== "/contact-us" ? headers : headers.slice(0, 1)).map(
               (dat, i) => (
@@ -227,7 +235,7 @@ const Header = () => {
                     </Text>
                   </Flex>
                 </Link>
-              ),
+              )
             )}
             <a href="/contact-us" rel="noreferrer">
               <Button w="112px" mt="-5px" fontSize="14px">

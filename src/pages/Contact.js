@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   Box,
   Button,
@@ -53,8 +53,6 @@ const Contact = () => {
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [self, setSelf] = useState("");
   const [loading, setLoading] = useState(false);
 
   const sendEmail = async (e) => {
@@ -65,9 +63,9 @@ const Contact = () => {
 
       await emailjs.sendForm(
         "service_qxj8a0o",
-        "template_jzechmn",
+        "contact_form",
         form.current,
-        "_lUXdxtuoOOPggNCb",
+        "_lUXdxtuoOOPggNCb"
       );
     } catch (error) {
       console.error("Error sending email:", error);
@@ -76,8 +74,6 @@ const Contact = () => {
       setMessage("");
       setName("");
       setEmail("");
-      setPhone("");
-      setSelf("");
     }
   };
 
@@ -118,7 +114,7 @@ const Contact = () => {
             <Layout
               label="What's your email?"
               value={email}
-              ype="email"
+              type="email"
               onChange={(e) => {
                 setEmail(e.target.value);
               }}

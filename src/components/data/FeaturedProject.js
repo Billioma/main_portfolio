@@ -2,9 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { Box, Flex, Image, Text, useMediaQuery } from "@chakra-ui/react";
 import { FaGithub, FaEye } from "react-icons/fa";
 import { BsCircleFill, BsTriangleFill } from "react-icons/bs";
+import { featuredWorks } from "../common/constants";
 
 const FeaturedProject = () => {
   const ref = useRef();
+  const mobileRef = useRef();
   const throttle = (func, limit) => {
     let inThrottle;
     return function () {
@@ -18,7 +20,21 @@ const FeaturedProject = () => {
     };
   };
 
+  const mobileThrottle = (func, limit) => {
+    let inThrottle;
+    return function () {
+      const args = arguments;
+      const context = this;
+      if (!inThrottle) {
+        func.apply(context, args);
+        inThrottle = true;
+        setTimeout(() => (inThrottle = false), limit);
+      }
+    };
+  };
+
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [mobileIndex, setMobileIndex] = useState(0);
 
   const scroll = (direction) => {
     if (ref.current) {
@@ -43,11 +59,29 @@ const FeaturedProject = () => {
     }
   };
 
+  const handleMobileScrolls = (index) => {
+    setMobileIndex(index);
+    if (mobileRef.current && mobileRef.current.children[index]) {
+      mobileRef.current.children[index].scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    }
+  };
+
   const handleScroll = () => {
     if (ref.current) {
       const scrollPosition = ref.current.scrollLeft;
       const index = Math.round(scrollPosition / ref.current.offsetWidth);
       setCurrentIndex(index);
+    }
+  };
+
+  const handleMobileScroll = () => {
+    if (mobileRef.current) {
+      const scrollPosition = mobileRef.current.scrollLeft;
+      const index = Math.round(scrollPosition / mobileRef.current.offsetWidth);
+      setMobileIndex(index);
     }
   };
 
@@ -64,6 +98,25 @@ const FeaturedProject = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
       ref.current.removeEventListener("scroll", handleScrollThrottled);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleMobileResize = () => {
+      setMobileIndex(0);
+    };
+
+    const handleMobileScrollThrottled = mobileThrottle(handleMobileScroll, 200);
+
+    window.addEventListener("resize", handleMobileResize);
+    mobileRef.current.addEventListener("scroll", handleMobileScrollThrottled);
+
+    return () => {
+      window.removeEventListener("resize", handleMobileResize);
+      mobileRef.current.removeEventListener(
+        "scroll",
+        handleMobileScrollThrottled
+      );
     };
   }, []);
 
@@ -107,12 +160,12 @@ const FeaturedProject = () => {
             scrollBehavior="smooth"
             transition="0.5s ease-in-out"
           >
-            {["", "", "", ""].map((dat, i) => (
+            {featuredWorks.map((dat, i) => (
               <Box key={i + 1} minW="100%" mr="10px">
                 <Flex w="100%" flexDir="row-reverse">
                   <Box w="100%" fontWeight={600}>
                     <Text textAlign="right" color="#CCD6F6" fontSize="30px">
-                      Example Project
+                      {dat?.title}
                     </Text>
 
                     <Box
@@ -126,19 +179,20 @@ const FeaturedProject = () => {
                         color="#CCD6F6"
                         fontWeight={500}
                         p="20px"
-                        pr="100px"
+                        pl="100px"
                       >
-                        A web app for visualizing personalized Spotify data.
-                        View your top artists, top tracks, recently played
-                        tracks, and detailed audio information about each track.
-                        Create and save new playlists of recommended tracks
-                        based on your existing playlists and more.
+                        {dat?.desc}{" "}
                       </Text>
                     </Box>
-
-                    <Flex mt="20px" align="center" gap="20px">
-                      <FaGithub className="view" cursor="pointer" size="28px" />
-                      <FaEye className="view" cursor="pointer" size="30px" />
+                    <Flex
+                      mt="20px"
+                      justifyContent="flex-end"
+                      align="center"
+                      gap="20px"
+                    >
+                      <a href={dat?.live} target="_blank" rel="noreferrer">
+                        <FaEye className="view" cursor="pointer" size="30px" />
+                      </a>
                     </Flex>
                   </Box>
 
@@ -149,7 +203,7 @@ const FeaturedProject = () => {
                       borderRadius="720px"
                       w="642px"
                       h="720px"
-                      opacity={0.2}
+                      opacity={0.1}
                       left="28rem"
                       top="50%"
                       transform="translate(-50%, -50%)"
@@ -167,7 +221,7 @@ const FeaturedProject = () => {
                         h="90%"
                         borderTopRightRadius="15px"
                         borderBottomLeftRadius="15px"
-                        src="/assets/check.png"
+                        src={dat?.img}
                         pos="absolute"
                         left="0"
                         bottom="0"
@@ -183,11 +237,11 @@ const FeaturedProject = () => {
             overflowX="scroll"
             className="no_scroller"
             display={{ base: "flex", md: "none" }}
-            ref={ref}
+            ref={mobileRef}
             scrollBehavior="smooth"
             transition="0.5s ease-in-out"
           >
-            {["", "", "", ""].map((dat, i) => (
+            {featuredWorks.map((dat, i) => (
               <Box key={i + 1} minW="100%" mr="10px">
                 <Text
                   textAlign="right"
@@ -195,22 +249,10 @@ const FeaturedProject = () => {
                   mb="20px"
                   fontSize={{ base: "25px", md: "30px" }}
                 >
-                  Example Project
+                  {dat?.title}
                 </Text>
                 <Flex w="100%" flexDir="row-reverse">
                   <Box w="100%">
-                    <Box
-                      pos="absolute"
-                      display={{ base: "none", md: "block" }}
-                      bg="radial-gradient(50% 50% at 50% 50%, #763CAC 0%, rgba(50, 15, 133, 0.00) 100%)"
-                      borderRadius="720px"
-                      w="642px"
-                      h="720px"
-                      opacity={0.2}
-                      left="28rem"
-                      top="50%"
-                      transform="translate(-50%, -50%)"
-                    />
                     <Box
                       overflow="hidden"
                       bg="#2B0B3A"
@@ -222,10 +264,10 @@ const FeaturedProject = () => {
                       <Image
                         w="90%"
                         h="90%"
-                        objectFit="contain"
+                        objectFit="cover"
                         borderTopRightRadius="15px"
                         borderBottomLeftRadius="15px"
-                        src="/assets/check.png"
+                        src={dat?.img}
                         pos="absolute"
                         left="0"
                         bottom="0"
@@ -235,22 +277,14 @@ const FeaturedProject = () => {
                 </Flex>
                 <Box w="100%" mt="30px">
                   <Text color="#CCD6F6" fontWeight={500}>
-                    A web app for visualizing personalized Spotify data. View
-                    your top artists, top tracks, recently played tracks, and
-                    detailed audio information about each track. Create and save
-                    new playlists of recommended tracks based on your existing
-                    playlists and more.
+                    {dat?.desc}
                   </Text>
                 </Box>
 
-                <Flex
-                  mt="40px"
-                  justifyContent="center"
-                  align="center"
-                  gap="20px"
-                >
-                  <FaGithub className="view" cursor="pointer" size="28px" />
-                  <FaEye className="view" cursor="pointer" size="30px" />
+                <Flex mt="40px" align="center" gap="20px">
+                  <a href={dat?.live} target="_blank" rel="noreferrer">
+                    <FaEye className="view" cursor="pointer" size="30px" />
+                  </a>
                 </Flex>
               </Box>
             ))}
@@ -260,11 +294,31 @@ const FeaturedProject = () => {
             w="100%"
             justifyContent="flex-end"
             gap="10px"
+            display={{ base: "none", md: "flex" }}
             align="flex-end"
           >
-            {["", "", "", ""].map((dat, i) => (
+            {["", "", "", "", "", "", "", ""].map((dat, i) => (
               <Box key={i} onClick={() => handleScrolls(i)}>
                 {currentIndex === i ? (
+                  <Box bg="#7127BA" w="30px" h="10px" borderRadius="20px" />
+                ) : (
+                  <BsCircleFill cursor="pointer" color="#D9D9D9" size="10px" />
+                )}
+              </Box>
+            ))}
+          </Flex>
+
+          <Flex
+            mt="50px"
+            display={{ base: "flex", md: "none" }}
+            w="100%"
+            justifyContent="flex-end"
+            gap="10px"
+            align="flex-end"
+          >
+            {["", "", "", "", "", "", "", ""].map((dat, i) => (
+              <Box key={i} onClick={() => handleMobileScrolls(i)}>
+                {mobileIndex === i ? (
                   <Box bg="#7127BA" w="30px" h="10px" borderRadius="20px" />
                 ) : (
                   <BsCircleFill cursor="pointer" color="#D9D9D9" size="10px" />
@@ -282,13 +336,13 @@ const FeaturedProject = () => {
         >
           <Flex
             className="glass"
-            cursor={currentIndex === 3 ? "" : "pointer"}
+            cursor={currentIndex === 7 ? "" : "pointer"}
             h="50px"
-            _hover={{ bg: currentIndex === 3 ? "" : "#7127BA" }}
+            _hover={{ bg: currentIndex === 7 ? "" : "#7127BA" }}
             transition=".3s ease-in-out"
             w="50px"
             rounded="full"
-            onClick={() => (currentIndex === 3 ? "" : scroll("right"))}
+            onClick={() => (currentIndex === 7 ? "" : scroll("right"))}
             justifyContent="center"
             align="center"
           >

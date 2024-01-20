@@ -129,3 +129,97 @@ export const experience = [
     link: "https://cyberme.studio/",
   },
 ];
+
+export const personalWorks = [
+  {
+    id: 1,
+    img: "/assets/diner.png",
+    title: "Diner Project",
+    desc: "Discover a digital haven for ClayPot. Dive into a visual feast of menu delights, chef's specials, and crowd favorites. Embark on your flavorful journey now.",
+    live: "https://restaurant-page-ui.vercel.app/",
+    github: "https://github.com/Billioma/restaurant-UI",
+  },
+  {
+    id: 2,
+    img: "/assets/estate.png",
+    title: "Real Estate",
+    desc: "Your gateway to exceptional properties and unparalleled living. Explore a curated collection of homes, apartments, and investment opportunities. Dive into detailed listings, and neighborhood insights. Find your dream space with us – where every property tells a unique story. Start your real estate journey now.",
+    live: "https://oma-realestate.vercel.app/",
+    github: "https://github.com/Billioma/oma_realestate",
+  },
+  {
+    id: 3,
+    img: "/assets/task.png",
+    title: "Task Tracker",
+    desc: "Effortlessly organize your tasks, set deadlines, and track progress in one streamlined platform. Gain insights into your workflow, prioritize effectively, and celebrate accomplishments. Get started with Task Tracker.",
+    live: "https://task-tracker-indol.vercel.app/",
+    github: "https://github.com/Billioma/task-tracker",
+  },
+  {
+    id: 4,
+    img: "/assets/fintech.png",
+    title: "Fin-tech Project",
+    desc: "Seamlessly manage your finances, invest wisely. Your digital companion for a secure financial future. Join us in redefining finance—simple, smart, and tailored just for you. Explore the possibilities with RiseFinance.",
+    live: "https://rise-finance.netlify.app/",
+    github: "https://github.com/Billioma/risefinance",
+  },
+];
+
+export const featuredWorks = [
+  {
+    id: 1,
+    img: "/assets/ezpark.png",
+    title: "EZPark Project",
+    desc: "A pioneering industry-leader and trusted service provider delivering comprehensive solutions to various parking needs of clients and guests.",
+    live: "https://ezpark-website.vercel.app/",
+  },
+  {
+    id: 2,
+    img: "/assets/parkinspace.png",
+    title: "Parkinspace Project",
+    desc: "EZPark's proprietary and pioneering technology solution where customers can find, reserve and pay for parking services in an easy, fast and stress-free way via mobile or web. Clients benefit too as they can better operate their business, enhance their customers' experience and maximize value.",
+    live: "https://parkinspace.ng/",
+  },
+  {
+    id: 3,
+    img: "/assets/customer.png",
+    title: "Parkinspace Customer Web",
+    desc: "Customers can find, reserve and pay for parking services in an easy, fast and stress-free way via mobile or web. They also subscribe for services, access discounts and earn rewards to use across multiple locations.",
+    live: "https://app.parkinspace.ng/",
+  },
+  {
+    id: 4,
+    img: "/assets/zendwallet.png",
+    title: "ZendWallet",
+    desc: "An advanced cryptocurrency platform that offers a wide range of features for seamless financial transactions empowering users to easily deposit and withdraw funds, swap between different coins effortlessly, and engage in peer-to-peer fiat transactions.",
+    live: "https://zendwallet.com/register",
+  },
+  {
+    id: 5,
+    img: "/assets/fastamoni.png",
+    title: "Fastamoni",
+    desc: "FastaMoni offers a payment platform that simplifies funds management and enhances cross-border transactions across board.",
+    live: "https://www.fastamoni.com/",
+  },
+  {
+    id: 6,
+    img: "/assets/edupali.png",
+    title: "Edupali Project",
+    desc: "A Fastamoni product, EduPali streamlines and automates fee collection and reconciliation processes, reducing operational costs and improving efficiency for school administrators. Additionally, EduPali makes school fees more affordable for parents by providing payment plans that align with their revenue.",
+    live: "https://www.edupali.com/",
+  },
+  {
+    id: 7,
+    img: "/assets/school.png",
+    title: "Edupali School Portal",
+    desc: "School administrators can keep better track of all payments history, access up to 20M Naira loan to fund school operations and projects, relieve parents of the hassle of bulk payments, expand population with the help of our innovative solutions.",
+    live: "https://school.edupali.com/",
+  },
+  {
+    id: 8,
+    img: "/assets/parent.png",
+    title: "Edupali Parent Portal",
+    desc: "Parents can automate school fees payments with our daily, weekly and monthly plans, easily make full payment in advance for the entire term or academic year and stay informed with real-time payment updates and transaction history.",
+    live: "https://www.parent.edupali.com",
+  },
+];

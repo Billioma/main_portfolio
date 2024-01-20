@@ -57,7 +57,7 @@ const About = () => {
             borderRadius="100%"
             bg="radial-gradient(50% 50% at 50% 50%, #763CAC 0%, rgba(50, 15, 133, 0.00) 100%)"
             pos="absolute"
-            opacity={0.7}
+            opacity={0.4}
             left="50%"
             top="50%"
             transform="translate(-50%, -50%)"
@@ -137,6 +137,7 @@ const About = () => {
           </Text>
           {iconRows}
         </Box>
+
 
         <Orbit />
       </Box>

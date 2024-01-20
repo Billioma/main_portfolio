@@ -9,23 +9,33 @@ const Home = () => {
           <Flex
             justifyContent="center"
             align="center"
-            w={{ base: "280px", md: "385px" }}
-            h={{ base: "300px", md: "431px" }}
-            bg="radial-gradient(50% 50% at 50% 50%, #763CAC 0%, rgba(50, 15, 133, 0.00) 100%)"
+            pos="relative"
           >
             <Flex
               justifyContent="center"
               align="center"
-              w={{ base: "180px", md: "258px" }}
-              h={{ base: "200px", md: "259px" }}
-              bg="radial-gradient(50% 50% at 50% 50%, #FFF -80%, rgba(67, 67, 67, 0.00) 100%)"
+              opacity={0.7}
+              w={{ base: "280px", md: "385px" }}
+              h={{ base: "300px", md: "431px" }}
+              bg="radial-gradient(50% 50% at 50% 50%, #763CAC 0%, rgba(50, 15, 133, 0.00) 100%)"
             >
-              <Image
-                src="/assets/avatar.svg"
-                w={{ base: "100px", md: "165px" }}
-                h={{ base: "100px", md: "223px" }}
-              />
+              <Flex
+                justifyContent="center"
+                align="center"
+                w={{ base: "180px", md: "258px" }}
+                h={{ base: "200px", md: "259px" }}
+                bg="radial-gradient(50% 50% at 50% 50%, #FFF -80%, rgba(67, 67, 67, 0.00) 100%)"
+              ></Flex>
             </Flex>
+            <Image
+              src="/assets/avatar.svg"
+              pos="absolute"
+              left="50%"
+              top="50%"
+              transform="translate(-50%, -50%)"
+              w={{ base: "100px", md: "165px" }}
+              h={{ base: "100px", md: "223px" }}
+            />
           </Flex>
           <Box
             w={{ base: "100%", md: "30%" }}
@@ -76,7 +86,7 @@ const Home = () => {
 
         <Box mt="67px" w={{ base: "100%", md: "78%" }}>
           <Text
-            lineHeight={{ base: "180%", md: "unset" }}
+            lineHeight="180%"
             fontSize={{ base: "16px", md: "20px" }}
           >
             A self-taught Software Engineer (Front-end), functioning in the
