@@ -4,11 +4,22 @@ const boxShadow = "0px 4px 234px rgba(221, 161, 94, 0.3)";
 const colorValue = boxShadow.match(/rgba?\(([^)]+)\)/)[1];
 const bgColor = `rgba(${colorValue})`;
 
+const breakpoints = {
+  base: "0px",
+  sm: "320px",
+  md: "768px",
+  lg: "960px",
+  xl: "1200px",
+  "2xl": "1536px",
+  "3xl": "1636px",
+};
+
 export const customTheme = extendTheme({
   fonts: {
     heading: `"antonia-variable", sans-serif`,
     body: `"antonia-variable", sans-serif`,
   },
+  breakpoints,
   components: {
     Radio: {
       variants: {

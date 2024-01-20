@@ -6,9 +6,9 @@ import FeaturedProject from "./FeaturedProject";
 const Projects = () => {
   return (
     <section id="projects">
-      <Box h="140vh">
-        <PersonalProject />
+      <Box>
         <FeaturedProject />
+        <PersonalProject />
       </Box>
     </section>
   );

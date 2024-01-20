@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Box, Flex, Image, Text, useMediaQuery } from "@chakra-ui/react";
-import { FaGithub, FaEye } from "react-icons/fa";
+import { FaEye, FaGithub } from "react-icons/fa";
 import { BsCircleFill, BsTriangleFill } from "react-icons/bs";
 import { personalWorks } from "../common/constants";
 
@@ -126,6 +126,7 @@ const PersonalProject = () => {
     <Box
       className={isMobile ? "" : "full_width"}
       px={{ base: "unset", md: "60px" }}
+      mt={{ base: "5rem", md: "25rem" }}
       fontFamily="Poppins"
       pos="relative"
     >
@@ -148,22 +149,22 @@ const PersonalProject = () => {
         </Box>
 
         <Box w="100%">
-          <Text color="#9857D3" mb="8px" fontSize="14px">
+          <Text textAlign="right" color="#9857D3" mb="8px" fontSize="14px">
             Personal Projects
           </Text>
           <Flex
-            display={{ base: "none", md: "flex" }}
             overflowX="scroll"
             className="no_scroller"
+            display={{ base: "none", md: "flex" }}
             ref={ref}
             scrollBehavior="smooth"
             transition="0.5s ease-in-out"
           >
             {personalWorks.map((dat, i) => (
               <Box key={i + 1} minW="100%" mr="10px">
-                <Flex w="100%">
+                <Flex w="100%" flexDir="row-reverse">
                   <Box w="100%" fontWeight={600}>
-                    <Text color="#CCD6F6" fontSize="30px">
+                    <Text textAlign="right" color="#CCD6F6" fontSize="30px">
                       {dat?.title}
                     </Text>
 
@@ -178,13 +179,17 @@ const PersonalProject = () => {
                         color="#CCD6F6"
                         fontWeight={500}
                         p="20px"
-                        pr="100px"
+                        pl="100px"
                       >
-                        {dat?.desc}
+                        {dat?.desc}{" "}
                       </Text>
                     </Box>
-
-                    <Flex mt="20px" align="center" gap="20px">
+                    <Flex
+                      mt="20px"
+                      justifyContent="flex-end"
+                      align="center"
+                      gap="20px"
+                    >
                       <a href={dat?.github} target="_blank" rel="noreferrer">
                         <FaGithub
                           className="view"
@@ -198,15 +203,15 @@ const PersonalProject = () => {
                     </Flex>
                   </Box>
 
-                  <Box ml="-100px" w="100%">
+                  <Box mr="-100px" w="100%">
                     <Box
                       pos="absolute"
                       bg="radial-gradient(50% 50% at 50% 50%, #763CAC 0%, rgba(50, 15, 133, 0.00) 100%)"
                       borderRadius="720px"
                       w="642px"
                       h="720px"
-                      opacity={0.2}
-                      right="10"
+                      opacity={0.1}
+                      left="28rem"
                       top="50%"
                       transform="translate(-50%, -50%)"
                     />
@@ -216,16 +221,16 @@ const PersonalProject = () => {
                       borderRadius="10px"
                       pos="relative"
                       zIndex={1}
-                      h="320px"
+                      h="290px"
                     >
                       <Image
                         w="90%"
                         h="90%"
-                        borderTopLeftRadius="15px"
-                        borderBottomRightRadius="15px"
+                        borderTopRightRadius="15px"
+                        borderBottomLeftRadius="15px"
                         src={dat?.img}
                         pos="absolute"
-                        right="0"
+                        left="0"
                         bottom="0"
                       />
                     </Box>
@@ -236,9 +241,9 @@ const PersonalProject = () => {
           </Flex>
 
           <Flex
-            display={{ base: "flex", md: "none" }}
             overflowX="scroll"
             className="no_scroller"
+            display={{ base: "flex", md: "none" }}
             ref={mobileRef}
             scrollBehavior="smooth"
             transition="0.5s ease-in-out"
@@ -246,13 +251,14 @@ const PersonalProject = () => {
             {personalWorks.map((dat, i) => (
               <Box key={i + 1} minW="100%" mr="10px">
                 <Text
+                  textAlign="right"
                   color="#CCD6F6"
                   mb="20px"
                   fontSize={{ base: "25px", md: "30px" }}
                 >
                   {dat?.title}
                 </Text>
-                <Flex w="100%">
+                <Flex w="100%" flexDir="row-reverse">
                   <Box w="100%">
                     <Box
                       overflow="hidden"
@@ -260,17 +266,17 @@ const PersonalProject = () => {
                       borderRadius="10px"
                       pos="relative"
                       zIndex={1}
-                      h="250px"
+                      h="220px"
                     >
                       <Image
                         w="90%"
                         h="90%"
                         objectFit="cover"
-                        borderTopLeftRadius="15px"
-                        borderBottomRightRadius="15px"
+                        borderTopRightRadius="15px"
+                        borderBottomLeftRadius="15px"
                         src={dat?.img}
                         pos="absolute"
-                        right="0"
+                        left="0"
                         bottom="0"
                       />
                     </Box>
@@ -282,12 +288,7 @@ const PersonalProject = () => {
                   </Text>
                 </Box>
 
-                <Flex
-                  mt="40px"
-                  justifyContent="center"
-                  align="center"
-                  gap="20px"
-                >
+                <Flex mt="40px" align="center" gap="20px">
                   <a href={dat?.github} target="_blank" rel="noreferrer">
                     <FaGithub className="view" cursor="pointer" size="28px" />
                   </a>
@@ -301,9 +302,9 @@ const PersonalProject = () => {
           <Flex
             mt="50px"
             w="100%"
-            display={{ base: "none", md: "flex" }}
             justifyContent="flex-end"
             gap="10px"
+            display={{ base: "none", md: "flex" }}
             align="flex-end"
           >
             {["", "", "", ""].map((dat, i) => (
@@ -318,9 +319,9 @@ const PersonalProject = () => {
           </Flex>
 
           <Flex
-            mt="-40px"
-            w="100%"
+            mt="50px"
             display={{ base: "flex", md: "none" }}
+            w="100%"
             justifyContent="flex-end"
             gap="10px"
             align="flex-end"
