@@ -491,6 +491,9 @@
 }
 
 @media (max-width: 500px) {
+  .cursor {
+    display: none;
+  }
   @keyframes img2-move {
     0% {
       transform: translate(1030%, 0%);
@@ -704,4 +707,25 @@
 
 .no_scroller::-webkit-scrollbar-thumb {
   background-color: transparent;
+}
+
+.progressBar {
+  height: 10px;
+  background-color: white;
+}
+
+.cursor {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid white;
+  position: fixed;
+  z-index: 999;
+}
+
+.phoneSvg {
+  stroke: orange;
+  position: absolute;
+  margin: auto;
+  z-index: -1;
 }

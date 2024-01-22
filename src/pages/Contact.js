@@ -9,6 +9,7 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
 
 export const Layout = ({ label, name, red, value, onChange }) => {
   return (
@@ -79,18 +80,31 @@ const Contact = () => {
 
   return (
     <Box fontFamily="Poppins">
-      <Text fontFamily="Preahvihear" fontWeight={600} lineHeight="17px">
-        Contact Us
-      </Text>
-      <Text
-        mt="20px"
-        fontFamily="Plus Jakarta Sans"
-        fontSize={{ base: "28px", lg: "38px" }}
-        lineHeight={{ base: "38px", lg: "61px" }}
-        fontWeight={385}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ x: [-150, 0], opacity: 1 }}
+        transition={{ duration: 1 }}
       >
-        Send a message, we reply very fast
-      </Text>
+        <Text fontFamily="Preahvihear" fontWeight={600} lineHeight="17px">
+          Contact Us
+        </Text>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ x: [150, 0], opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <Text
+          mt="20px"
+          fontFamily="Plus Jakarta Sans"
+          fontSize={{ base: "28px", lg: "38px" }}
+          lineHeight={{ base: "38px", lg: "61px" }}
+          fontWeight={385}
+        >
+          Send a message, we reply very fast
+        </Text>
+      </motion.div>
 
       <Flex
         justifyContent="space-between"
@@ -102,24 +116,37 @@ const Contact = () => {
       >
         <Box w="100%">
           <form ref={form} onSubmit={sendEmail}>
-            <Layout
-              label="What's your name?"
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-                setId(`Client #${(Math.random() * 100000) | 0}`);
-              }}
-              name="name"
-            />
-            <Layout
-              label="What's your email?"
-              value={email}
-              type="email"
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              name="user_email"
-            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ x: [-150, 0], opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <Layout
+                label="What's your name?"
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                  setId(`Client #${(Math.random() * 100000) | 0}`);
+                }}
+                name="name"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ x: [150, 0], opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <Layout
+                label="What's your email?"
+                value={email}
+                type="email"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                name="user_email"
+              />
+            </motion.div>
 
             <input
               type="text"
@@ -128,60 +155,97 @@ const Contact = () => {
               defaultValue={id}
               placeholder="Last name"
             />
-            <Layout
-              red
-              label="What's your message?"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              name="message"
-            />
-            <Button isLoading={loading} type="submit">
-              Submit
-            </Button>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ x: [-150, 0], opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <Layout
+                red
+                label="What's your message?"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                name="message"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ x: [150, 0], opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <Button isLoading={loading} type="submit">
+                Submit
+              </Button>
+            </motion.div>
           </form>
         </Box>
 
         <Box w="100%" fontSize={{ base: "18px", lg: "24px" }}>
           <Box mt="30px">
-            <Text
-              mb="10px"
-              fontWeight={600}
-              lineHeight={{ base: "22px", lg: "28px" }}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ y: [-50, 0], opacity: 1 }}
+              transition={{ duration: 1 }}
             >
-              Call me anytime
-            </Text>
+              <Text
+                mb="10px"
+                fontWeight={600}
+                lineHeight={{ base: "22px", lg: "28px" }}
+              >
+                Call me anytime
+              </Text>
+            </motion.div>
             <Flex
               mt="5px"
               lineHeight={{ base: "25px", lg: "33px" }}
               flexDir="column"
               fontSize="17px"
             >
-              <Link _hover={{ textDecor: "unset" }} href="tel:+2347061755488">
-                +234 706 175 5488
-              </Link>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ x: [150, 0], opacity: 1 }}
+                transition={{ duration: 1 }}
+              >
+                <Link _hover={{ textDecor: "unset" }} href="tel:+2347061755488">
+                  +234 706 175 5488
+                </Link>
+              </motion.div>
             </Flex>
           </Box>
 
           <Box mt="30px">
-            <Text
-              mb="10px"
-              fontWeight={600}
-              lineHeight={{ base: "22px", lg: "28px" }}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ y: [50, 0], opacity: 1 }}
+              transition={{ duration: 1 }}
             >
-              Or Email me at
-            </Text>
+              <Text
+                mb="10px"
+                fontWeight={600}
+                lineHeight={{ base: "22px", lg: "28px" }}
+              >
+                Or Email me at
+              </Text>
+            </motion.div>
             <Flex
               mt="5px"
               lineHeight={{ base: "25px", lg: "33px" }}
               flexDir="column"
               fontSize="17px"
             >
-              <Link
-                _hover={{ textDecor: "unset" }}
-                href="mailto:ibeomari@gmail.com"
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ x: [-150, 0], opacity: 1 }}
+                transition={{ duration: 1 }}
               >
-                ibeomari@gmail.com
-              </Link>
+                <Link
+                  _hover={{ textDecor: "unset" }}
+                  href="mailto:ibeomari@gmail.com"
+                >
+                  ibeomari@gmail.com
+                </Link>
+              </motion.div>
             </Flex>
           </Box>
         </Box>

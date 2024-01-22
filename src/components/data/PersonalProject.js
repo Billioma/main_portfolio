@@ -3,6 +3,7 @@ import { Box, Flex, Image, Text, useMediaQuery } from "@chakra-ui/react";
 import { FaEye, FaGithub } from "react-icons/fa";
 import { BsCircleFill, BsTriangleFill } from "react-icons/bs";
 import { personalWorks } from "../common/constants";
+import { motion } from "framer-motion";
 
 const PersonalProject = () => {
   const ref = useRef();
@@ -164,76 +165,105 @@ const PersonalProject = () => {
               <Box key={i + 1} minW="100%" mr="10px">
                 <Flex w="100%" flexDir="row-reverse">
                   <Box w="100%" fontWeight={600}>
-                    <Text textAlign="right" color="#CCD6F6" fontSize="30px">
-                      {dat?.title}
-                    </Text>
-
-                    <Box
-                      w="100%"
-                      pos="relative"
-                      zIndex={2}
-                      className="glass"
-                      mt="30px"
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileInView={{ x: [150, 0], opacity: 1 }}
+                      transition={{ duration: 1 }}
                     >
-                      <Text
-                        color="#CCD6F6"
-                        fontWeight={500}
-                        p="20px"
-                        pl="100px"
-                      >
-                        {dat?.desc}{" "}
+                      <Text textAlign="right" color="#CCD6F6" fontSize="30px">
+                        {dat?.title}
                       </Text>
-                    </Box>
-                    <Flex
-                      mt="20px"
-                      justifyContent="flex-end"
-                      align="center"
-                      gap="20px"
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileInView={{ y: [50, 0], opacity: 1 }}
+                      transition={{ duration: 1 }}
                     >
-                      <a href={dat?.github} target="_blank" rel="noreferrer">
-                        <FaGithub
-                          className="view"
-                          cursor="pointer"
-                          size="28px"
-                        />
-                      </a>
-                      <a href={dat?.live} target="_blank" rel="noreferrer">
-                        <FaEye className="view" cursor="pointer" size="30px" />
-                      </a>
-                    </Flex>
+                      <Box
+                        w="100%"
+                        pos="relative"
+                        zIndex={2}
+                        className="glass"
+                        mt="30px"
+                      >
+                        <Text
+                          color="#CCD6F6"
+                          fontWeight={500}
+                          p="20px"
+                          pl="100px"
+                        >
+                          {dat?.desc}{" "}
+                        </Text>
+                      </Box>
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileInView={{ y: [50, 0], opacity: 1 }}
+                      transition={{ duration: 1, delay: 1 }}
+                    >
+                      <Flex
+                        mt="20px"
+                        justifyContent="flex-end"
+                        align="center"
+                        gap="20px"
+                      >
+                        <a href={dat?.github} target="_blank" rel="noreferrer">
+                          <FaGithub
+                            className="view"
+                            cursor="pointer"
+                            size="28px"
+                          />
+                        </a>
+                        <a href={dat?.live} target="_blank" rel="noreferrer">
+                          <FaEye
+                            className="view"
+                            cursor="pointer"
+                            size="30px"
+                          />
+                        </a>
+                      </Flex>
+                    </motion.div>
                   </Box>
 
                   <Box mr="-100px" w="100%">
-                    <Box
-                      pos="absolute"
-                      bg="radial-gradient(50% 50% at 50% 50%, #763CAC 0%, rgba(50, 15, 133, 0.00) 100%)"
-                      borderRadius="720px"
-                      w="642px"
-                      h="720px"
-                      opacity={0.1}
-                      left="28rem"
-                      top="50%"
-                      transform="translate(-50%, -50%)"
-                    />
-                    <Box
-                      overflow="hidden"
-                      bg="#2B0B3A"
-                      borderRadius="10px"
-                      pos="relative"
-                      zIndex={1}
-                      h="290px"
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileInView={{ x: [-150, 0], opacity: 1 }}
+                      transition={{ duration: 1 }}
                     >
-                      <Image
-                        w="90%"
-                        h="90%"
-                        borderTopRightRadius="15px"
-                        borderBottomLeftRadius="15px"
-                        src={dat?.img}
+                      <Box
                         pos="absolute"
-                        left="0"
-                        bottom="0"
+                        bg="radial-gradient(50% 50% at 50% 50%, #763CAC 0%, rgba(50, 15, 133, 0.00) 100%)"
+                        borderRadius="720px"
+                        w="642px"
+                        h="720px"
+                        opacity={0.1}
+                        left="28rem"
+                        top="50%"
+                        transform="translate(-50%, -50%)"
                       />
-                    </Box>
+                      <Box
+                        overflow="hidden"
+                        bg="#2B0B3A"
+                        borderRadius="10px"
+                        pos="relative"
+                        zIndex={1}
+                        h="290px"
+                      >
+                        <Image
+                          w="90%"
+                          h="90%"
+                          borderTopRightRadius="15px"
+                          borderBottomLeftRadius="15px"
+                          src={dat?.img}
+                          pos="absolute"
+                          left="0"
+                          bottom="0"
+                        />
+                      </Box>
+                    </motion.div>
                   </Box>
                 </Flex>
               </Box>
@@ -250,43 +280,61 @@ const PersonalProject = () => {
           >
             {personalWorks.map((dat, i) => (
               <Box key={i + 1} minW="100%" mr="10px">
-                <Text
-                  textAlign="right"
-                  color="#CCD6F6"
-                  mb="20px"
-                  fontSize={{ base: "25px", md: "30px" }}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ x: [150, 0], opacity: 1 }}
+                  transition={{ duration: 1 }}
                 >
-                  {dat?.title}
-                </Text>
+                  <Text
+                    textAlign="right"
+                    color="#CCD6F6"
+                    mb="20px"
+                    fontSize={{ base: "25px", md: "30px" }}
+                  >
+                    {dat?.title}
+                  </Text>
+                </motion.div>
                 <Flex w="100%" flexDir="row-reverse">
                   <Box w="100%">
-                    <Box
-                      overflow="hidden"
-                      bg="#2B0B3A"
-                      borderRadius="10px"
-                      pos="relative"
-                      zIndex={1}
-                      h="220px"
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileInView={{ x: [-150, 0], opacity: 1 }}
+                      transition={{ duration: 1 }}
                     >
-                      <Image
-                        w="90%"
-                        h="90%"
-                        objectFit="cover"
-                        borderTopRightRadius="15px"
-                        borderBottomLeftRadius="15px"
-                        src={dat?.img}
-                        pos="absolute"
-                        left="0"
-                        bottom="0"
-                      />
-                    </Box>
+                      <Box
+                        overflow="hidden"
+                        bg="#2B0B3A"
+                        borderRadius="10px"
+                        pos="relative"
+                        zIndex={1}
+                        h="220px"
+                      >
+                        <Image
+                          w="90%"
+                          h="90%"
+                          objectFit="cover"
+                          borderTopRightRadius="15px"
+                          borderBottomLeftRadius="15px"
+                          src={dat?.img}
+                          pos="absolute"
+                          left="0"
+                          bottom="0"
+                        />
+                      </Box>
+                    </motion.div>
                   </Box>
                 </Flex>
-                <Box w="100%" mt="30px">
-                  <Text color="#CCD6F6" fontWeight={500}>
-                    {dat?.desc}
-                  </Text>
-                </Box>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ x: [150, 0], opacity: 1 }}
+                  transition={{ duration: 1 }}
+                >
+                  <Box w="100%" mt="30px">
+                    <Text color="#CCD6F6" fontWeight={500}>
+                      {dat?.desc}
+                    </Text>
+                  </Box>
+                </motion.div>
 
                 <Flex mt="40px" align="center" gap="20px">
                   <a href={dat?.github} target="_blank" rel="noreferrer">
@@ -308,13 +356,23 @@ const PersonalProject = () => {
             align="flex-end"
           >
             {["", "", "", ""].map((dat, i) => (
-              <Box key={i} onClick={() => handleScrolls(i)}>
-                {currentIndex === i ? (
-                  <Box bg="#7127BA" w="30px" h="10px" borderRadius="20px" />
-                ) : (
-                  <BsCircleFill cursor="pointer" color="#D9D9D9" size="10px" />
-                )}
-              </Box>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ x: [150, 0], opacity: 1 }}
+                transition={{ duration: 1, delay: 0.1 * i }}
+              >
+                <Box key={i} onClick={() => handleScrolls(i)}>
+                  {currentIndex === i ? (
+                    <Box bg="#7127BA" w="30px" h="10px" borderRadius="20px" />
+                  ) : (
+                    <BsCircleFill
+                      cursor="pointer"
+                      color="#D9D9D9"
+                      size="10px"
+                    />
+                  )}
+                </Box>
+              </motion.div>
             ))}
           </Flex>
 
@@ -327,13 +385,23 @@ const PersonalProject = () => {
             align="flex-end"
           >
             {["", "", "", ""].map((dat, i) => (
-              <Box key={i} onClick={() => handleMobileScrolls(i)}>
-                {mobileIndex === i ? (
-                  <Box bg="#7127BA" w="30px" h="10px" borderRadius="20px" />
-                ) : (
-                  <BsCircleFill cursor="pointer" color="#D9D9D9" size="10px" />
-                )}
-              </Box>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ x: [30, 0], opacity: 1 }}
+                transition={{ duration: 1, delay: 0.1 * i }}
+              >
+                <Box key={i} onClick={() => handleMobileScrolls(i)}>
+                  {mobileIndex === i ? (
+                    <Box bg="#7127BA" w="30px" h="10px" borderRadius="20px" />
+                  ) : (
+                    <BsCircleFill
+                      cursor="pointer"
+                      color="#D9D9D9"
+                      size="10px"
+                    />
+                  )}
+                </Box>
+              </motion.div>
             ))}
           </Flex>
         </Box>
