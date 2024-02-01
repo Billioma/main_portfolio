@@ -109,18 +109,18 @@ export const experience = [
     desc: "A comprehensive, all-in-one SaaS platform and franchise alternative for cleaners.",
     link: "https://www.usespritz.com/",
   },
-  {
-    title: "Fastamoni",
-    img: "/assets/fasta-logo.svg",
-    desc: "A financial technology company that offers a payment platform simplifying funds management",
-    link: "https://fastamoni.com/",
-  },
-  {
-    title: "Travelbay",
-    img: "/assets/travel-logo.svg",
-    desc: "The most convenient way for Nigerians/Africans to experience the world!",
-    link: "https://travelbayonline.com/",
-  },
+  // {
+  //   title: "Fastamoni",
+  //   img: "/assets/fasta-logo.svg",
+  //   desc: "A financial technology company that offers a payment platform simplifying funds management",
+  //   link: "https://fastamoni.com/",
+  // },
+  // {
+  //   title: "Travelbay",
+  //   img: "/assets/travel-logo.svg",
+  //   desc: "The most convenient way for Nigerians/Africans to experience the world!",
+  //   link: "https://travelbayonline.com/",
+  // },
   {
     title: "CyberME Studio",
     img: "/assets/cyber-logo.png",

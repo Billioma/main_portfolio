@@ -116,7 +116,7 @@ const PersonalProject = () => {
       window.removeEventListener("resize", handleMobileResize);
       mobileRef.current.removeEventListener(
         "scroll",
-        handleMobileScrollThrottled,
+        handleMobileScrollThrottled
       );
     };
   }, []);
@@ -228,42 +228,36 @@ const PersonalProject = () => {
                   </Box>
 
                   <Box mr="-100px" w="100%">
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      whileInView={{ x: [-150, 0], opacity: 1 }}
-                      transition={{ duration: 1 }}
+                    <Box
+                      pos="absolute"
+                      bg="radial-gradient(50% 50% at 50% 50%, #763CAC 0%, rgba(50, 15, 133, 0.00) 100%)"
+                      borderRadius="720px"
+                      w="642px"
+                      h="720px"
+                      opacity={0.1}
+                      left="28rem"
+                      top="50%"
+                      transform="translate(-50%, -50%)"
+                    />
+                    <Box
+                      overflow="hidden"
+                      bg="#2B0B3A"
+                      borderRadius="10px"
+                      pos="relative"
+                      zIndex={1}
+                      h="290px"
                     >
-                      <Box
+                      <Image
+                        w="90%"
+                        h="90%"
+                        borderTopRightRadius="15px"
+                        borderBottomLeftRadius="15px"
+                        src={dat?.img}
                         pos="absolute"
-                        bg="radial-gradient(50% 50% at 50% 50%, #763CAC 0%, rgba(50, 15, 133, 0.00) 100%)"
-                        borderRadius="720px"
-                        w="642px"
-                        h="720px"
-                        opacity={0.1}
-                        left="28rem"
-                        top="50%"
-                        transform="translate(-50%, -50%)"
+                        left="0"
+                        bottom="0"
                       />
-                      <Box
-                        overflow="hidden"
-                        bg="#2B0B3A"
-                        borderRadius="10px"
-                        pos="relative"
-                        zIndex={1}
-                        h="290px"
-                      >
-                        <Image
-                          w="90%"
-                          h="90%"
-                          borderTopRightRadius="15px"
-                          borderBottomLeftRadius="15px"
-                          src={dat?.img}
-                          pos="absolute"
-                          left="0"
-                          bottom="0"
-                        />
-                      </Box>
-                    </motion.div>
+                    </Box>
                   </Box>
                 </Flex>
               </Box>
@@ -280,61 +274,45 @@ const PersonalProject = () => {
           >
             {personalWorks.map((dat, i) => (
               <Box key={i + 1} minW="100%" mr="10px">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ x: [150, 0], opacity: 1 }}
-                  transition={{ duration: 1 }}
+                <Text
+                  textAlign="right"
+                  color="#CCD6F6"
+                  mb="20px"
+                  fontSize={{ base: "25px", md: "30px" }}
                 >
-                  <Text
-                    textAlign="right"
-                    color="#CCD6F6"
-                    mb="20px"
-                    fontSize={{ base: "25px", md: "30px" }}
-                  >
-                    {dat?.title}
-                  </Text>
-                </motion.div>
+                  {dat?.title}
+                </Text>
+
                 <Flex w="100%" flexDir="row-reverse">
                   <Box w="100%">
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      whileInView={{ x: [-150, 0], opacity: 1 }}
-                      transition={{ duration: 1 }}
+                    <Box
+                      overflow="hidden"
+                      bg="#2B0B3A"
+                      borderRadius="10px"
+                      pos="relative"
+                      zIndex={1}
+                      h="220px"
                     >
-                      <Box
-                        overflow="hidden"
-                        bg="#2B0B3A"
-                        borderRadius="10px"
-                        pos="relative"
-                        zIndex={1}
-                        h="220px"
-                      >
-                        <Image
-                          w="90%"
-                          h="90%"
-                          objectFit="cover"
-                          borderTopRightRadius="15px"
-                          borderBottomLeftRadius="15px"
-                          src={dat?.img}
-                          pos="absolute"
-                          left="0"
-                          bottom="0"
-                        />
-                      </Box>
-                    </motion.div>
+                      <Image
+                        w="90%"
+                        h="90%"
+                        objectFit="cover"
+                        borderTopRightRadius="15px"
+                        borderBottomLeftRadius="15px"
+                        src={dat?.img}
+                        pos="absolute"
+                        left="0"
+                        bottom="0"
+                      />
+                    </Box>
                   </Box>
                 </Flex>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ x: [150, 0], opacity: 1 }}
-                  transition={{ duration: 1 }}
-                >
-                  <Box w="100%" mt="30px">
-                    <Text color="#CCD6F6" fontWeight={500}>
-                      {dat?.desc}
-                    </Text>
-                  </Box>
-                </motion.div>
+
+                <Box w="100%" mt="30px">
+                  <Text color="#CCD6F6" fontWeight={500}>
+                    {dat?.desc}
+                  </Text>
+                </Box>
 
                 <Flex mt="40px" align="center" gap="20px">
                   <a href={dat?.github} target="_blank" rel="noreferrer">
@@ -385,23 +363,13 @@ const PersonalProject = () => {
             align="flex-end"
           >
             {["", "", "", ""].map((dat, i) => (
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ x: [30, 0], opacity: 1 }}
-                transition={{ duration: 1, delay: 0.1 * i }}
-              >
-                <Box key={i} onClick={() => handleMobileScrolls(i)}>
-                  {mobileIndex === i ? (
-                    <Box bg="#7127BA" w="30px" h="10px" borderRadius="20px" />
-                  ) : (
-                    <BsCircleFill
-                      cursor="pointer"
-                      color="#D9D9D9"
-                      size="10px"
-                    />
-                  )}
-                </Box>
-              </motion.div>
+              <Box key={i} onClick={() => handleMobileScrolls(i)}>
+                {mobileIndex === i ? (
+                  <Box bg="#7127BA" w="30px" h="10px" borderRadius="20px" />
+                ) : (
+                  <BsCircleFill cursor="pointer" color="#D9D9D9" size="10px" />
+                )}
+              </Box>
             ))}
           </Flex>
         </Box>
