@@ -11,7 +11,15 @@ import {
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 
-export const Layout = ({ label, name, red, value, onChange }) => {
+export const Layout = ({
+  label,
+  name,
+  pattern,
+  type,
+  red,
+  value,
+  onChange,
+}) => {
   return (
     <Box mb="20px">
       <Text
@@ -37,6 +45,8 @@ export const Layout = ({ label, name, red, value, onChange }) => {
           rounded="0"
           bg="unset"
           mt="5px"
+          type={type}
+          pattern={pattern}
           name={name}
           value={value}
           onChange={onChange}
@@ -66,7 +76,7 @@ const Contact = () => {
         "service_qxj8a0o",
         "contact_form",
         form.current,
-        "_lUXdxtuoOOPggNCb",
+        "_lUXdxtuoOOPggNCb"
       );
     } catch (error) {
       console.error("Error sending email:", error);
@@ -122,8 +132,10 @@ const Contact = () => {
               transition={{ duration: 1 }}
             >
               <Layout
-                label="What's your name?"
+                label="What's your phone?"
                 value={name}
+                type="tel"
+                pattern="[0-9]{10}"
                 onChange={(e) => {
                   setName(e.target.value);
                   setId(`Client #${(Math.random() * 100000) | 0}`);
