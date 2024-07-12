@@ -3,15 +3,18 @@ import {
   Box,
   Button,
   Flex,
+  HStack,
   Input,
   Link,
+  PinInput,
+  PinInputField,
   Text,
   Textarea,
 } from "@chakra-ui/react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 
-export const Layout = ({ label, name, red, value, onChange }) => {
+export const Layout = ({ label, type, name, red, value, onChange }) => {
   return (
     <Box mb="20px">
       <Text
@@ -38,6 +41,7 @@ export const Layout = ({ label, name, red, value, onChange }) => {
           bg="unset"
           mt="5px"
           name={name}
+          type={type}
           value={value}
           onChange={onChange}
           h="39px"
@@ -66,7 +70,7 @@ const Contact = () => {
         "service_qxj8a0o",
         "contact_form",
         form.current,
-        "_lUXdxtuoOOPggNCb",
+        "_lUXdxtuoOOPggNCb"
       );
     } catch (error) {
       console.error("Error sending email:", error);
@@ -105,6 +109,54 @@ const Contact = () => {
           Send a message, we reply very fast
         </Text>
       </motion.div>
+
+      <HStack
+            spacing={"20px"}
+            alignItems="center"
+            mt="24px"
+          >
+            <PinInput
+              type="tel"
+              otp
+              size="lg"
+              placeholder=""
+              value={value}
+              onChange={(e) => setValue(e)}
+            >
+              <PinInputField
+                w={ "76px"}
+                h={ "76px"}
+                bg="#EEF2F6"
+                pattern="[0-9]{10}"
+                fontSize={15}
+                color="#07142F"
+              />
+              <PinInputField
+                w={ "76px"}
+                h={ "76px"}
+                bg="#EEF2F6"
+                fontSize={15}
+                color="#07142F"
+                pattern="[0-9]{10}"
+              />
+              <PinInputField
+                w={ "76px"}
+                h={ "76px"}
+                bg="#EEF2F6"
+                fontSize={15}
+                color="#07142F"
+                pattern="[0-9]{10}"
+              />
+              <PinInputField
+                w={ "76px"}
+                pattern="[0-9]{10}"
+                h={ "76px"}
+                bg="#EEF2F6"
+                fontSize={15}
+                color="#07142F"
+              />
+            </PinInput>
+          </HStack>
 
       <Flex
         justifyContent="space-between"
