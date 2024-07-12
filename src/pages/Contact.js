@@ -81,7 +81,7 @@ const Contact = () => {
       setEmail("");
     }
   };
-
+const [value, setValue] = useState("")
   return (
     <Box fontFamily="Poppins">
       <motion.div
