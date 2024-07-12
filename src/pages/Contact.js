@@ -139,6 +139,8 @@ const handleChange = (value) => {
                 h={ "76px"}
                 bg="#EEF2F6"
                 fontSize={15}
+                inputMode="numeric"
+                type="tel"
                 color="#07142F"
               />
               <PinInputField
@@ -146,11 +148,14 @@ const handleChange = (value) => {
                 h={ "76px"}
                 bg="#EEF2F6"
                 fontSize={15}
+                inputMode="numeric"
+                type="tel"
                 color="#07142F"
               />
               <PinInputField
                 w={ "76px"}
-                h={ "76px"}
+                h={ "76px"} inputMode="numeric"
+                type="tel"
                 bg="#EEF2F6"
                 fontSize={15}
                 color="#07142F"
@@ -158,7 +163,8 @@ const handleChange = (value) => {
               <PinInputField
                 w={ "76px"}
                 h={ "76px"}
-                bg="#EEF2F6"
+                bg="#EEF2F6" inputMode="numeric"
+                type="tel"
                 fontSize={15}
                 color="#07142F"
               />
