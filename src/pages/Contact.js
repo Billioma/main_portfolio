@@ -82,6 +82,17 @@ const Contact = () => {
     }
   };
 const [value, setValue] = useState("")
+
+
+const handleChange = (value) => {
+  // Regular expression to match only digits
+  const regex = /^[0-9]*$/;
+
+  // If the value matches the regex, update the state
+  if (regex.test(value)) {
+    setValue(value);
+  }
+};
   return (
     <Box fontFamily="Poppins">
       <motion.div
@@ -121,13 +132,12 @@ const [value, setValue] = useState("")
               size="lg"
               placeholder=""
               value={value}
-              onChange={(e) => setValue(e)}
+              onChange={handleChange}
             >
               <PinInputField
                 w={ "76px"}
                 h={ "76px"}
                 bg="#EEF2F6"
-                pattern="[0-9]{10}"
                 fontSize={15}
                 color="#07142F"
               />
@@ -137,7 +147,6 @@ const [value, setValue] = useState("")
                 bg="#EEF2F6"
                 fontSize={15}
                 color="#07142F"
-                pattern="[0-9]{10}"
               />
               <PinInputField
                 w={ "76px"}
@@ -145,11 +154,9 @@ const [value, setValue] = useState("")
                 bg="#EEF2F6"
                 fontSize={15}
                 color="#07142F"
-                pattern="[0-9]{10}"
               />
               <PinInputField
                 w={ "76px"}
-                pattern="[0-9]{10}"
                 h={ "76px"}
                 bg="#EEF2F6"
                 fontSize={15}
